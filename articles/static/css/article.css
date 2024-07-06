@@ -1,0 +1,60 @@
+body {
+    background: #1abc9c;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+}
+
+.archive {
+    width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.archive .archive .one-post .post-title {
+    font-size: 32px;
+    line-height: 64px;
+}
+
+.archive .one-post .article-info .article-author {
+    width:50%;
+    float: left;
+}
+
+.article-created-date {
+    text-align: right;
+}
+
+.article-to-all {
+    text-align: right;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+.archive .one-post .article-text {
+    font-size: 14px;
+}
+
+.article {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+}
+
+.article .all_article{
+    color:#ffffff;
+    font-size: 24px;
+    text-align: right;
+}
+
+
+
