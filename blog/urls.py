@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from articles import views
+from articles import views as article_views
+from articles.views import ArticleCreateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.archive, name='archive'),
+    path('', article_views.archive, name='archive'),
+    path('article/new/', ArticleCreateView.as_view(), name='create_post'),
     path('article/', include('articles.urls')),
 ]

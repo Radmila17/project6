@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Django Public Blog - создать статью</title>
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+</head>
+<body>
+<div class="container pt-5">
+<div class="content">
+<h1>Написать статью</h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+        {% bootstrap_form form %}
+        {% bootstrap_button button_type="submit" content="Отправить" %}
+</form>
+{{ form.errors }}
+</div>
+</div>
+</body>
+</html>
+
+
