@@ -25,7 +25,6 @@ def get_article(request, article_id):
         raise Http404
     
 from django.urls import reverse_lazy
-from django.http import HttpResponseRedirect
 
 class ArticleCreateView(CreateView):
     model = Article
