@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/article.css"> 
-    <title> Архив статей </title>
-  </head>
-  <body>
-    <div class="header">
-      {% load static %}
-      <img class="displayed" src="{% static "img/logotip.png" %}" />
-    </div>
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
     <div class="archive">
       <div class="one-post">
-        <div class="article-to-all">
-            <a class='article-to-all' href="{% url 'archive' %}"> Все статьи </a>
-        </div>
         <h2 class="post-title">{{ post.title }}</h2> 
         <div class="article-info">
           <div class="article-author"> {{ post.author.username}} </div>
@@ -22,5 +12,4 @@
         <p class="article-text"> {{ post.text }}</p>
       </div>
     </div>
-  </body>
-</html>
+{% endblock %}

@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from articles import views as article_views
 from articles.views import ArticleCreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.views.generic.edit import CreateView
+from django.urls import reverse_lazy
 
 
 urlpatterns = [
@@ -24,4 +27,15 @@ urlpatterns = [
     path('', article_views.archive, name='archive'),
     path('article/new/', ArticleCreateView.as_view(), name='create_post'),
     path('article/', include('articles.urls')),
+    path(
+        'auth/registration/',
+        CreateView.as_view(
+            template_name='registration/registration_form.html',
+            form_class=UserCreationForm,
+            success_url=reverse_lazy('archive'),
+        ),
+        name='registration',
+    ),
+    path('auth/', include('django.contrib.auth.urls')),
+    path('accounts/profile/', article_views.archive),
 ]

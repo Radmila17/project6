@@ -1,0 +1,40 @@
+<header>
+    <link rel="stylesheet" href="{{ STATIC_URL }}/static/css/article.css"> 
+    <nav class="navbar shadow-sm">
+      <div class="container pt-5">
+
+        {% load static %}
+        <img class="displayed" src="{% static "img/logotip.png" %}" />
+        {% with request.resolver_match.view_name as view_name %}
+          <ul class="nav nav-pills">
+            {% if view_name == 'articles:get_article' %}
+            <li class="nav-item">
+              <a class= "nav-link" href="{% url 'archive' %}"> Все статьи </a>
+            </li>
+            {% endif %}
+            {% if user.is_authenticated  %}
+            <li class="nav-item">
+                <a class="nav-link {% if view_name == 'create_post' %} active {% endif %}"
+                href="{% url 'create_post' %}">
+                Создать пост
+                </a>
+            </li>
+              <span class="navbar-text">Пользователь: <b>{{ user.username }}</b></span>
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+              <li class="nav-item">
+                <a class="nav-link" >Выйти</a>
+              </li>
+            </form>
+              <!-- Новая кнопка -->
+            {% else %}
+              <!-- Новая кнопка -->
+              <li class="nav-item">
+                <a class="nav-link{% if view_name == 'registration' %} active {% endif %}" href="{% url 'login' %}">Войти в систему</a>
+              </li>
+            {% endif %}
+          </ul>
+        {% endwith %}
+      </div>
+    </nav>
+  </header>

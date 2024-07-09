@@ -6,9 +6,6 @@ from django.shortcuts import redirect
 from django.views.generic.edit import CreateView
 from .models import Article
 from django.urls import reverse_lazy
-from django.utils import timezone
-
-
 
 
 def archive(request):
@@ -23,8 +20,7 @@ def get_article(request, article_id):
         return render(request, 'article.html', {"post": post})
     except Article.DoesNotExist:
         raise Http404
-    
-from django.urls import reverse_lazy
+
 
 class ArticleCreateView(CreateView):
     model = Article
@@ -63,4 +59,10 @@ def create_post(request):
     else:
         raise Http404
 
- 
+class UserCreateView(CreateView):
+    model = user
+    fields = ['username', 'email', 'password']
+
+    def get_success_url(self):
+        return reverse_lazy('archive.html')
+
